@@ -1,8 +1,6 @@
 import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
 
-// Remember to rename these classes and interfaces!
-
 interface MyPluginSettings {
 	fileExtension: string;
 }
@@ -39,6 +37,9 @@ export default class MyPlugin extends Plugin {
 		this.registerInterval(
 			window.setInterval(() => console.log("setInterval"), 5 * 60 * 1000)
 		);
+
+		// register the view and extensions
+		this.registerExtensions([this.settings.fileExtension], "markdown");
 	}
 
 	onunload() {}
